@@ -23,72 +23,53 @@ Where official Json.NET 12.0.1 becomes Newtonsoft.Json-for-Unity 12.0.1_xx_.
 
 Please see the [CHANGELOG.md][changelog.md] file inside this package.
 
-## Installation via Unity Package Manager
+### Install from NPM
+* Navigate to the `Packages` directory of your project.
+* Adjust the [project manifest file](https://docs.unity3d.com/Manual/upm-manifestPrj.html) `manifest.json` in a text editor.
+* Ensure `https://registry.npmjs.org/` is part of `scopedRegistries`.
+  * Ensure `com.stansassets` is part of `scopes`.
+  * Add `com.stansassets.newtonjson` to the `dependencies`, stating the latest version.
 
-Open `<project>/Packages/manifest.json`, add scope for `jillejr`, then add the package in the list of dependencies.
-
-À la:
-
-```json
-{
-  "scopedRegistries": [
-    {
-      "name": "Packages from jillejr",
-      "url": "https://npm.cloudsmith.io/jillejr/newtonsoft-json-for-unity/",
-      "scopes": ["jillejr"]
+A minimal example ends up looking like this. Please note that the version `X.Y.Z` stated here is to be replaced with [the latest released version](https://www.npmjs.com/package/com.stansassets.newtonjson) which is currently [![NPM Package](https://img.shields.io/npm/v/com.stansassets.newtonjson)](https://www.npmjs.com/package/com.stansassets.newtonjson).
+  ```json
+  {
+    "scopedRegistries": [
+      {
+        "name": "npmjs",
+        "url": "https://registry.npmjs.org/",
+        "scopes": [
+          "com.stansassets"
+        ]
+      }
+    ],
+    "dependencies": {
+      "com.stansassets.newtonjson: "X.Y.Z",
+      ...
     }
-  ],
-  "dependencies": {
-    "jillejr.newtonsoft.json-for-unity": "12.0.101",
-
-    "com.unity.modules.ai": "1.0.0",
-    "com.unity.modules.animation": "1.0.0",
-    "com.unity.modules.assetbundle": "1.0.0",
-    "com.unity.modules.audio": "1.0.0",
-    "com.unity.modules.cloth": "1.0.0",
-    "com.unity.modules.director": "1.0.0",
-    "com.unity.modules.imageconversion": "1.0.0"
   }
-}
-```
+  ```
+* Switch back to the Unity software and wait for it to finish importing the added package.
 
-## Updating the package
+### Install from OpenUPM
+* Install openupm-cli `npm install -g openupm-cli` or `yarn global add openupm-cli`
+* Enter your unity project folder `cd <YOUR_UNITY_PROJECT_FOLDER>`
+* Install package `openupm add com.stansassets.newtonjson`
 
-### Updating via the UI
+### Install from a Git URL
+Yoy can also install this package via Git URL. To load a package from a Git URL:
 
-Open the Package Manager UI `Window > Package Manager`
+* Open [Unity Package Manager](https://docs.unity3d.com/Manual/upm-ui.html) window.
+* Click the add **+** button in the status bar.
+* The options for adding packages appear.
+* Select Add package from git URL from the add menu. A text box and an Add button appear.
+* Enter the `https://github.com/StansAssets/com.stansassets.newtonjson.git` Git URL in the text box and click Add.
+* You may also install a specific package version by using the URL with the specified version.
+  * `https://github.com/StansAssets/com.stansassets.newtonjson.git#X.Y.X`
+  * Please note that the version `X.Y.Z` stated here is to be replaced with the version you would like to get.
+  * You can find all the available releases [here](https://github.com/StansAssets/com.stansassets.newtonjson/releases).
+  * The latest available release version is [![Last Release](https://img.shields.io/github/v/release/stansassets/com.stansassets.newtonjson)](https://github.com/StansAssets/com.stansassets.newtonjson/releases/latest)
 
-![preview of where window button is](https://i.imgur.com/0FvA5W6.png)
-
-Followed by pressing the update button on the `jillejr.newtonsoft.json-for-unity` package
-
-![preview of update button](https://i.imgur.com/H6LhK2n.png)
-
-### Updating via the manifest file
-
-Change the version field. You have to know the new version beforehand.
-
-> Example, with this as old:
->
-> ```json
-> {
->   "dependencies": {
->     "jillejr.newtonsoft.json-for-unity": "12.0.101"
->   }
-> }
-> ```
->
-> New, updated:
->
-> ```json
-> {
->   "dependencies": {
->     "jillejr.newtonsoft.json-for-unity": "12.0.201"
->   }
-> }
-> ```
->
-> _Omitted `scopedRegistries` and Unity packages for readability_
+For more information about what protocols Unity supports, see [Git URLs](https://docs.unity3d.com/Manual/upm-git.html).
 
 ---
 
@@ -98,7 +79,3 @@ Copyright (c) 2019 Kalle Jillheden (jilleJr)
 <https://github.com/jilleJr/Newtonsoft.Json-for-Unity>
 
 See full copyrights in [LICENSE.md][license.md] inside repository
-
-[license.md]: https://github.com/jilleJr/Newtonsoft.Json-for-Unity/blob/master/LICENSE.md
-[changelog.md]: https://github.com/jilleJr/Newtonsoft.Json-for-Unity/blob/master/LICENSE.md
-[version-explanation.png]: https://github.com/jilleJr/Newtonsoft.Json-for-Unity/raw/ce23d98230673744d73656b4c4f6bc1f9989c37a/Doc/version-explanation.png
