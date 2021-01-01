@@ -1,4 +1,7 @@
-# Newtonsoft.Json for Unity
+# Stan's Assets mirror of Newtonsoft.Json for Unity
+
+Package exists because Unity package manager does not allow depdncinses in packages in
+The original repo can be found [here](https://github.com/jilleJr/Newtonsoft.Json-for-Unity)
 
 Json.NET is a popular high-performance JSON framework for .NET
 
